@@ -1,3 +1,10 @@
+/*-------------------- Róbs - music.c - Theme songs, yay ----------------------
+**------------Authors(partial): Breno Campos Ferreira Guimaraes----------------
+**------------------------------Alberto Nonato Passini-------------------------
+**------------------------------Germano Luis Marques Moura Leite---------------
+*/
+
+/*plays the imperial march from Star Wars*/
 void playRobotTheme()
 {    
     float B = 493.88;  
@@ -19,6 +26,7 @@ void playRobotTheme()
     tone(B,0.6);   
 }
 
+/*plays the Mission: Impossible theme song*/
 void missionImpossible()
 {
     float B = 493.88;
