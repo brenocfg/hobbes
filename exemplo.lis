@@ -1,3 +1,4 @@
+sensors.c
 movement.c
 music.c
 menu.c

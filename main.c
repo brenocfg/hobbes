@@ -2,6 +2,9 @@ void main()
 {
     int goToMenu = 0;
     poke(0x1009, 0x3c);
+    bit_clear(0x1008, 0x04);
+    bit_clear(0x1008, 0x08);
+    bit_clear(0x1008, 0x10);
     
     while(1)
       {       
