@@ -7,18 +7,20 @@
 /*number of options in each menu/submenu*/
 #define Itens_Main_Menu 3
 #define Itens_Part1_Menu 4
-#define Itens_Part2_Menu 5
+#define Itens_Part2_Menu 3
 #define Itens_Part3_Menu 1
 
 /*definition of color types (this must be in this file, because HandyBoard)*/
 #define red 0
 #define green 1
 #define blue 2
+#define yellow 3
+#define black 4
 
 /*the arrays that contain the menu options*/
 char MainMenu[Itens_Main_Menu][40] = {"1- Movement", "2- Sensors", "3- Decisions"};
 char Part1Menu[Itens_Part1_Menu][40] = {"1- Line", "2- Triangle", "3- Square", "4- Return"};
-char Part2Menu[Itens_Part2_Menu][40] = {"1- Red", "2- Green", "3- Blue", "4- Distance", "5- Return"};
+char Part2Menu[Itens_Part2_Menu][40] = {"1- ID Color", "2- Distance", "3- Return"};
 char Part3Menu[Itens_Part3_Menu][40] = {"1- Return"};
 
 
@@ -54,10 +56,10 @@ void executeItem(int MenuOption) {
             part2_menu();  
         }
         case 2: {    
-            light_led(blue);
+            part3_menu();
         }
         case 3: {
-            line();
+            lineAndTurn();
         }
         case 4: {
             triangle();
@@ -69,21 +71,15 @@ void executeItem(int MenuOption) {
             start_menu();
         }
         case 7: {    
-            light_led(red);
+            id_color();
         }
         case 8: {
-            light_led(green);
-        }
-        case 9: {
-            light_led(blue);
-        }
-        case 10: {
             readDistance();
         }
-        case 11: {
+        case 9: {
             start_menu();
         }
-        case 12: {
+        case 10: {
             start_menu();
         }
     }

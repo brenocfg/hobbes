@@ -1,4 +1,4 @@
-/*--------------- Róbs - movement.c - Movement/motor interfacing --------------
+/*--------------- Rbs - movement.c - Movement/motor interfacing --------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
@@ -7,19 +7,21 @@
 /*turns right 90 degrees*/
 void turn90degrees() {
     bothMotors(73, -80);
-    sleep(2.0);
+    sleep(2.1);
+    ao();
 }
 
 /*turns right 135 degrees*/
 void turn135degrees(){
     bothMotors(73, -80);
-    sleep(3.0);
+    sleep(3.05);
+    ao();
 }
 
 /*turns on both motors with the given intensities*/
 void bothMotors(int left, int right) {
-    motor(3, left);
-    motor(0, right);
+    motor(0, left);
+    motor(3, right);
 }
 
 
@@ -27,15 +29,15 @@ void bothMotors(int left, int right) {
 void line(){
     int i;
     int left = 55;
-    int right = 57;
+    int right = 63;
     for (i = 0; i < 18; i++) {
         bothMotors(left, right);
         left++;
         right++;
         sleep(0.13);
     }
-    bothMotors(73, 76);
-    sleep(2.35);
+    bothMotors(78, 84);
+    sleep(2.1);
     bothMotors(0, 0);
 }
 
@@ -43,25 +45,33 @@ void line(){
 void longline(){
     int i;
     int left = 55;
-    int right = 57;
+    int right = 63;
     for (i = 0; i < 18; i++) {
         bothMotors(left, right);
         left++;
         right++;
         sleep(0.13);
     }
-    bothMotors(73, 76);
-    sleep(3.9);
+    bothMotors(78, 84);
+    sleep(4.2);
     bothMotors(0, 0);
 }
 
+/*performs the first course, going in a straight line then back*/
+void lineAndTurn() {
+    line();
+    turn90degrees();
+    turn90degrees();
+    line();
+}
+
 /*performs the "triangle" shape motion, making three lines and two turns*/
-void triangle(){
+void triangle() {
+    line();
+    turn90degrees();
     line();
     turn135degrees();
     longline();
-    turn135degrees();
-    line();
 }
 
 /*makes the "square" shape motion, making 4 lines and three turns*/
