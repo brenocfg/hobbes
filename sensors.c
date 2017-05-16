@@ -46,3 +46,9 @@ void light_led(int color) {
         }
     }
 }
+
+void readDistance () {
+    while (1) {
+        printf("%d\n", analog(5));
+    }
+}

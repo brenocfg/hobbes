@@ -1,4 +1,4 @@
-/*-------------------- Róbs - menu.c - Menu for user interface-----------------
+/*-------------------- Rbs - menu.c - Menu for user interface-----------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
@@ -8,7 +8,7 @@
 #define Itens_Main_Menu 3
 #define Itens_Part1_Menu 4
 #define Itens_Part2_Menu 5
-#define Itens_Part2_Menu 1
+#define Itens_Part3_Menu 1
 
 /*definition of color types (this must be in this file, because HandyBoard)*/
 #define red 0
@@ -78,7 +78,7 @@ void executeItem(int MenuOption) {
             light_led(blue);
         }
         case 10: {
-            printDistance();
+            readDistance();
         }
         case 11: {
             start_menu();
@@ -144,11 +144,11 @@ void part3_menu() {
             msleep(100L);
             
             if (start_button()) {
-                executeItem(i+Itens_Main_Menu);
+                executeItem(i+Itens_Main_Menu+Itens_Part1_Menu+Itens_Part2_Menu);
                 while (start_button());
             }
             if (stop_button()) {
-                i = (i + 1)% Itens_Part1_Menu;  
+                i = (i + 1)% Itens_Part3_Menu;  
                 while (stop_button());
             }
         }        
