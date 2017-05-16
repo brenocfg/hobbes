@@ -1,3 +1,4 @@
+util.c
 sensors.c
 movement.c
 music.c
