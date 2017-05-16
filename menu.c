@@ -7,18 +7,9 @@
 /*number of options in each menu/submenu*/
 #define Itens_Main_Menu 3
 #define Itens_Part1_Menu 4
-<<<<<<< HEAD
-#define Itens_Part2_Menu 5
-
-#define red 0
-#define green 1
-#define blue 2
-=======
 #define Itens_Part2_Menu 3
 #define Itens_Part3_Menu 1
->>>>>>> 007476f6b9887cb651c62aa28d45d827308acb28
 
-/*definition of color types (this must be in this file, because HandyBoard)*/
 #define red 0
 #define green 1
 #define blue 2
@@ -28,13 +19,8 @@
 /*the arrays that contain the menu options*/
 char MainMenu[Itens_Main_Menu][40] = {"1- Movement", "2- Sensors", "3- Decisions"};
 char Part1Menu[Itens_Part1_Menu][40] = {"1- Line", "2- Triangle", "3- Square", "4- Return"};
-<<<<<<< HEAD
-char Part2Menu[Itens_Part2_Menu][40] = {"1- Red", "2- Green", "3- Blue", "4- Distance", "5- Return"};
-=======
 char Part2Menu[Itens_Part2_Menu][40] = {"1- ID Color", "2- Distance", "3- Return"};
 char Part3Menu[Itens_Part3_Menu][40] = {"1- Return"};
-
->>>>>>> 007476f6b9887cb651c62aa28d45d827308acb28
 
 /*the main start menu*/
 void start_menu() {
@@ -83,20 +69,6 @@ void executeItem(int MenuOption) {
             start_menu();
         }
         case 7: {    
-<<<<<<< HEAD
-            light_led(red);
-        }
-        case 8: {
-            light_led(green);
-        }
-        case 9: {
-            light_led(blue);
-        }
-        case 10: {
-            printDistance();
-        }
-        case 11: {
-=======
             id_color();
         }
         case 8: {
@@ -106,7 +78,6 @@ void executeItem(int MenuOption) {
             start_menu();
         }
         case 10: {
->>>>>>> 007476f6b9887cb651c62aa28d45d827308acb28
             start_menu();
         }
     }
@@ -132,7 +103,6 @@ void part1_menu() {
             }
         }        
     }    
-<<<<<<< HEAD
 }
 
 void part2_menu()
@@ -162,16 +132,11 @@ void part2_menu()
 }
 
 
-void soundtrack () {
-=======
-}
-
 /*submenu for the sensoring section*/
 void part2_menu() {
     int i = 0;
     int option;
     
->>>>>>> 007476f6b9887cb651c62aa28d45d827308acb28
     while(1) {
         while((!start_button()) || (!stop_button())) {    
             printf("%s\n",Part2Menu[i]);
@@ -188,8 +153,6 @@ void part2_menu() {
         }       
     }    
 }
-<<<<<<< HEAD
-=======
 
 /*submenu for the decision-making section*/
 void part3_menu() {
@@ -212,4 +175,3 @@ void part3_menu() {
         }        
     }    
 }
->>>>>>> 007476f6b9887cb651c62aa28d45d827308acb28
