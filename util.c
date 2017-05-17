@@ -24,3 +24,8 @@ int min(int a, int b, int c) {
     }
     return min;
 }
+
+void timer(float time) {
+    sleep(time);
+    ao();
+}

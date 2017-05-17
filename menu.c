@@ -7,8 +7,8 @@
 /*number of options in each menu/submenu*/
 #define Itens_Main_Menu 3
 #define Itens_Part1_Menu 4
-#define Itens_Part2_Menu 3
-#define Itens_Part3_Menu 1
+#define Itens_Part2_Menu 2
+#define Itens_Part3_Menu 2
 
 #define red 0
 #define green 1
@@ -19,8 +19,8 @@
 /*the arrays that contain the menu options*/
 char MainMenu[Itens_Main_Menu][40] = {"1- Movement", "2- Sensors", "3- Decisions"};
 char Part1Menu[Itens_Part1_Menu][40] = {"1- Line", "2- Triangle", "3- Square", "4- Return"};
-char Part2Menu[Itens_Part2_Menu][40] = {"1- ID Color", "2- Distance", "3- Return"};
-char Part3Menu[Itens_Part3_Menu][40] = {"1- Return"};
+char Part2Menu[Itens_Part2_Menu][40] = {"1- ID Color", "2- Return"};
+char Part3Menu[Itens_Part3_Menu][40] = {"1- GO EXPLORING", "2- Return"};
 
 /*the main start menu*/
 void start_menu() {
@@ -49,36 +49,47 @@ void executeItem(int MenuOption) {
     switch(MenuOption) {
         case 0: {
             part1_menu();
+            break;
         }        
         case 1: {  
-            part2_menu();  
+            part2_menu();
+            break;
         }
         case 2: {    
             part3_menu();
+            break;
         }
         case 3: {
             lineAndTurn();
+            break;
         }
         case 4: {
             triangle();
+            break;
         }
         case 5: {
             square();
+            break;
         }
         case 6: {
             start_menu();
+            break;
         }
         case 7: {    
             id_color();
+            break;
         }
         case 8: {
-            readDistance();
+            start_menu();
+            break;
         }
         case 9: {
-            start_menu();
+            explore();
+            break;
         }
         case 10: {
             start_menu();
+            break;
         }
     }
 }
@@ -104,33 +115,6 @@ void part1_menu() {
         }        
     }    
 }
-
-void part2_menu()
-{
-    int i = 0;
-    int option;
-    
-    while(1)   
-      {
-        while((!start_button()) || (!stop_button()))
-          {    
-            printf("%s\n",Part2Menu[i]);
-            msleep(100L);
-            
-            if ( start_button() )
-              {
-                executeItem(i+Itens_Main_Menu+Itens_Part1_Menu);
-                while (start_button());
-            }
-            if ( stop_button() )
-              {
-                i = (i + 1)% Itens_Part2_Menu;  
-                while (stop_button());
-            }
-        }       
-    }    
-}
-
 
 /*submenu for the sensoring section*/
 void part2_menu() {
@@ -161,7 +145,7 @@ void part3_menu() {
     
     while(1) {
         while((!start_button()) || (!stop_button())) {    
-            printf("%s\n",Part1Menu[i]);
+            printf("%s\n",Part3Menu[i]);
             msleep(100L);
             
             if (start_button()) {

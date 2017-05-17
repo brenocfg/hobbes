@@ -1,4 +1,4 @@
-/*-------------------- Róbs - main.c - Main file/Entry point ------------------
+/*-------------------- Rbs - main.c - Main file/Entry point ------------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
@@ -8,7 +8,7 @@
 void main()
 {
     int goToMenu = 0;
-
+    
     /*setup digital outputs for LED interfacing*/
     poke(0x1009, 0x3c);
     bit_clear(0x1008, 0x04);

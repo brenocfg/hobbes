@@ -84,3 +84,15 @@ void square(){
     turn90degrees();
     line();
 }
+
+void explore() {
+    int i;
+    int distance = 255;
+    
+    start_process(timer(10.0));
+    bothMotors(78, 84);
+    while (distance > 100) {
+        distance = analog(5);
+    }
+    ao();
+}
