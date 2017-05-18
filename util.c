@@ -27,5 +27,5 @@ int min(int a, int b, int c) {
 
 void timer(float time) {
     sleep(time);
-    ao();
+    timer_running = 0;
 }

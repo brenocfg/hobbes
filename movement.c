@@ -4,17 +4,34 @@
 **-------------------------Germano Luis Marques Moura Leite--------------------
 */
 
+int timer_running;
+
+/*backs up a tiny amount, to avoid hitting blocks*/
+void back() {
+    bothMotors(-78, -84);
+    sleep(0.5);
+    ao();
+}
+    
+
+/*turns left 90 degrees*/
+void turn90degreesLeft() {
+    bothMotors(-73, 80);
+    sleep(1.75);
+    ao();
+}
+
 /*turns right 90 degrees*/
 void turn90degrees() {
     bothMotors(73, -80);
-    sleep(2.1);
+    sleep(1.75);
     ao();
 }
 
 /*turns right 135 degrees*/
 void turn135degrees(){
     bothMotors(73, -80);
-    sleep(3.05);
+    sleep(2.5);
     ao();
 }
 
@@ -29,7 +46,7 @@ void bothMotors(int left, int right) {
 void line(){
     int i;
     int left = 55;
-    int right = 63;
+    int right = 61;
     for (i = 0; i < 18; i++) {
         bothMotors(left, right);
         left++;
@@ -45,7 +62,7 @@ void line(){
 void longline(){
     int i;
     int left = 55;
-    int right = 63;
+    int right = 61;
     for (i = 0; i < 18; i++) {
         bothMotors(left, right);
         left++;
@@ -88,11 +105,68 @@ void square(){
 void explore() {
     int i;
     int distance = 255;
+    int colors[3] = {0, 0, 0};
+    int blockColor;  
+    int timerid = start_process(timer(10.0));
     
-    start_process(timer(10.0));
+    timer_running = 1;
     bothMotors(78, 84);
-    while (distance > 100) {
+    while (distance > 100 && timer_running) {
         distance = analog(5);
     }
     ao();
+    
+    /*no obstacle, timer ran out, go back to main menu*/
+    if (kill_process(timerid)) {
+        start_menu();
+    }
+    
+    /*if we get to this point, then there was an obstacle*/
+    colors[0] = light_led(red, 100);
+    colors[1] = light_led(green, 100);
+    colors[2] = light_led(blue, 100);
+    //printf("Colors: %d %d %d\n", colors[0], colors[1], colors[2]);
+    
+    /*adjust blue measurement*/
+    colors[2] = (int) ((float)colors[2] * 0.7);
+    
+    /*get color and back up*/
+    blockColor = get_color(colors[0], colors[1], colors[2]);
+    back();
+    
+    /*decide what to do based on block color*/
+    switch(blockColor) {
+        /*red -> turn 180 degrees and go explore again*/
+        case red: {
+            turn90degrees();
+            turn90degrees();
+            explore();
+            break;
+        }
+        /*green -> turn 360 degrees and stop completely*/
+        case green: {
+            turn90degrees();
+            turn90degrees();
+            turn90degrees();
+            turn90degrees();
+            break;
+        }
+        /*blue -> turn right 90 degrees and go exploring*/
+        case blue: {
+            turn90degrees();
+            explore();
+            break;
+        }
+        /*yellow -> turn left 90 degrees and go explore*/
+        case yellow: {
+            turn90degreesLeft();
+            explore();
+            break;
+        }
+        /*black or whatever else -> do nothing*/
+        default: {
+            break;
+        }
+    }
+    start_menu();
 }
