@@ -1,9 +1,10 @@
-/*--------------- Rbs - movement.c - Movement/motor interfacing --------------
+/*--------------- Róbs - movement.c - Movement/motor interfacing --------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
 */
 
+/*global variable that determines whether the timer is running*/
 int timer_running;
 
 /*backs up a tiny amount, to avoid hitting blocks*/
@@ -107,9 +108,13 @@ void explore() {
     int distance = 255;
     int colors[3] = {0, 0, 0};
     int blockColor;  
-    int timerid = start_process(timer(10.0));
-    
+    int timerid;
+
+    /*starts timer thread (process, but whatever)*/ 
+    timerid = start_process(timer(10.0));
     timer_running = 1;
+
+    /*move forward while timer is running or no blocks have been found*/
     bothMotors(78, 84);
     while (distance > 100 && timer_running) {
         distance = analog(5);
@@ -121,11 +126,10 @@ void explore() {
         start_menu();
     }
     
-    /*if we get to this point, then there was an obstacle*/
+    /*if we get to this point, then there was an obstacle, so ID color*/
     colors[0] = light_led(red, 100);
     colors[1] = light_led(green, 100);
     colors[2] = light_led(blue, 100);
-    //printf("Colors: %d %d %d\n", colors[0], colors[1], colors[2]);
     
     /*adjust blue measurement*/
     colors[2] = (int) ((float)colors[2] * 0.7);

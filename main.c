@@ -1,4 +1,4 @@
-/*-------------------- Rbs - main.c - Main file/Entry point ------------------
+/*-------------------- Róbs - main.c - Main file/Entry point ------------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
@@ -14,7 +14,8 @@ void main()
     bit_clear(0x1008, 0x04);
     bit_clear(0x1008, 0x08);
     bit_clear(0x1008, 0x10);
-    
+
+    /*run main menu*/    
     while(1) {
         if(!goToMenu) {
             printf("Press START for Main Menu!\n");

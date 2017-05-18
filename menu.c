@@ -1,4 +1,4 @@
-/*-------------------- Rbs - menu.c - Menu for user interface-----------------
+/*-------------------- Róbs - menu.c - Menu for user interface-----------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
@@ -11,6 +11,7 @@
 #define Itens_Part3_Menu 2
 #define Itens_Calib_Menu 4
 
+/*enum for color types (Interactive C doesn't support enum, so we use define*/
 #define red 0
 #define green 1
 #define blue 2
@@ -65,50 +66,62 @@ void executeItem(int MenuOption) {
             calib_menu();
             break;
         }
+        /*line movement pattern*/
         case 4: {
             lineAndTurn();
             break;
         }
+        /*triangle movement pattern*/
         case 5: {
             triangle();
             break;
         }
+        /*square movement pattern*/
         case 6: {
             square();
             break;
         }
+        /*return*/
         case 7: {
             start_menu();
             break;
         }
+        /*ID Block Color*/
         case 8: {    
             id_color();
             break;
         }
+        /*return*/
         case 9: {
             start_menu();
             break;
         }
+        /*exploration mode*/
         case 10: {
             explore();
             break;
         }
+        /*return*/
         case 11: {
             start_menu();
             break;
         }
+        /*calibrate from red lgb output*/
         case 12: {
             calibrate_red();
             break;
         }
+        /*calibrate from green lgb output*/
         case 13: {
             calibrate_green();
             break;
         }
+        /*calibrate from blue lgb output*/
         case 14: {
             calibrate_blue();
             break;
         }
+        /*return*/
         case 15: {
             start_menu();
             break;

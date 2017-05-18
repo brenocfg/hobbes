@@ -1,11 +1,8 @@
-/*-------------------- Rbs - sensors.c - Sensor interfacing ------------------
+/*-------------------- Róbs - sensors.c - Sensor interfacing ------------------
 **----------------Authors: Breno Campos Ferreira Guimaraes---------------------
 **-------------------------Alberto Nonato Passini------------------------------
 **-------------------------Germano Luis Marques Moura Leite--------------------
 */
-
-/*lights the RGB LED with the given color, and measures LDR sensor output for a
-few samples*/
 
 /*references for red->green and red->blue measurements*/
 persistent int ref_rg_black;
